@@ -6,7 +6,9 @@ const { images } = ProductData.product;
 </script>
 
 <template>
-  <ProductImageViewer :images="images"/>
+  <article>
+    <ProductImageViewer :images="images"/>
+  </article>
 </template>
 
 <style scoped>

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, defineProps } from 'vue';
 
 const props = defineProps({
   images: {
@@ -24,7 +24,7 @@ const handleClickThumbnail = (index) => {
 </script>
 
 <template>
-  <div
+  <section
     v-if="images"
     class="product-image-viewer"
   >
@@ -35,6 +35,7 @@ const handleClickThumbnail = (index) => {
         :src="`https://rei.com/${selectedImage.heroImageUrl}`"
       >
     </div>
+    <span>{{ selectedImage.color.displayLabel }}</span>
     <div class="product-image-viewer__thumbnails-wrapper">
       <button
         v-for="(image, index) in images"
@@ -48,7 +49,7 @@ const handleClickThumbnail = (index) => {
         >
       </button>
     </div>
-  </div>
+  </section>
   <div v-else>
     <p>Something went wrong :(</p>
   </div>

@@ -6,6 +6,10 @@ const props = defineProps({
     type: Array,
     required: true,
   },
+  productTitle: {
+    type: String,
+    required: true,
+  },
 });
 
 const selectedImageIndex = ref(0);
@@ -20,7 +24,6 @@ const getThumbnailClasses = (index) => ({
 const handleClickThumbnail = (index) => {
   selectedImageIndex.value = index;
 };
-
 </script>
 
 <template>
@@ -33,6 +36,7 @@ const handleClickThumbnail = (index) => {
         v-if="selectedImage"
         class="product-image-viewer__hero-image"
         :src="`https://rei.com/${selectedImage.heroImageUrl}`"
+        :alt="`${productTitle} large product image`"
       >
     </div>
     <span class="product-image-viewer__label-color">{{ selectedImage.color.displayLabel }}</span>
@@ -42,10 +46,12 @@ const handleClickThumbnail = (index) => {
         :key="`image-${index}`"
         :class="getThumbnailClasses(index)"
         :onClick="() => handleClickThumbnail(index)"
+        :aria-label="`Select thumbnail image ${ index + 1 }`"
       >
         <img
           class="product-image-viewer__thumbnail-image"
           :src="`https://rei.com/${image.thumbnailUrl}`"
+          :alt="`${productTitle} product image`"
         >
       </button>
     </div>

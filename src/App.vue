@@ -3,12 +3,12 @@ import ProductImageViewer from './components/ProductImageViewer.vue';
 import ProductData from '../product-data.json';
 import './style/app.scss';
 
-const { images } = ProductData.product;
+const { images, title } = ProductData.product;
 </script>
 
 <template>
   <article class="product">
-    <ProductImageViewer :images="images"/>
+    <ProductImageViewer :images="images" :productTitle="title"/>
   </article>
 </template>
 

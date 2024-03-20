@@ -35,7 +35,7 @@ const handleClickThumbnail = (index) => {
         :src="`https://rei.com/${selectedImage.heroImageUrl}`"
       >
     </div>
-    <span>{{ selectedImage.color.displayLabel }}</span>
+    <span class="product-image-viewer__label-color">{{ selectedImage.color.displayLabel }}</span>
     <div class="product-image-viewer__thumbnails-wrapper">
       <button
         v-for="(image, index) in images"
@@ -57,9 +57,10 @@ const handleClickThumbnail = (index) => {
 
 <style scoped>
   .product-image-viewer {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    margin-bottom: 1rem;
   }
   .product-image-viewer__hero-image-wrapper {
     padding: 12px;
@@ -75,13 +76,16 @@ const handleClickThumbnail = (index) => {
     max-width: 100%;
     max-height: 100%;
   }
-
+  .product-image-viewer__label-color{
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
+  }
   .product-image-viewer__thumbnails-wrapper {
     display: flex;
   }
   .product-image-viewer__thumbnail {
-    width: 60px;
-    height: 60px;
+    width: 5rem;
+    height: 5rem;
     background: none;
     border: solid 1px rgba(60, 60, 60, 0.12);
     cursor: pointer;

@@ -5,6 +5,7 @@ import BreadcrumbPath from './components/BreadcrumbPath.vue';
 import ProductSizeSelector from './components/ProductSizeSelector.vue';
 import QuantitySelector from './components/QuantitySelector.vue';
 import DividenMessage from './components/DividendMessage.vue';
+import AddToCart from './components/AddToCart.vue';
 import ProductData from '../product-data.json';
 import './style/app.scss';
 
@@ -23,6 +24,9 @@ const handleQuantityUpdate = (value) => {
 };
 const handleCheckboxUpdate = (newValue) => {
   addMembership.value = newValue;
+};
+const handleSendRequest = (newValue) => {
+  emptySelection.value = newValue;
 };
 
 </script>
@@ -43,6 +47,12 @@ const handleCheckboxUpdate = (newValue) => {
       :isChecked="addMembership"
       :estimated="displayOptions.dividendEstimatedSavingsText"
       @update:checked="handleCheckboxUpdate"
+    />
+    <AddToCart
+      :selectedPrice="selectedPrice"
+      :addMembership="addMembership"
+      :quantity="quantity"
+      @send:request="handleSendRequest"
     />
   </article>
 </template>

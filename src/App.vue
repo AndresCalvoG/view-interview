@@ -4,20 +4,25 @@ import ProductImageViewer from './components/ProductImageViewer.vue';
 import BreadcrumbPath from './components/BreadcrumbPath.vue';
 import ProductSizeSelector from './components/ProductSizeSelector.vue';
 import QuantitySelector from './components/QuantitySelector.vue';
+import DividenMessage from './components/DividendMessage.vue';
 import ProductData from '../product-data.json';
 import './style/app.scss';
 
 const {
-  images, title, breadcrumbs, bySize,
+  images, title, breadcrumbs, bySize, displayOptions,
 } = ProductData.product;
 const selectedPrice = ref(0);
 const emptySelection = ref(false);
 const quantity = ref(1);
+const addMembership = ref(false);
 const handleSelectedPrice = (price) => {
   selectedPrice.value = price;
 };
 const handleQuantityUpdate = (value) => {
   quantity.value = value;
+};
+const handleCheckboxUpdate = (newValue) => {
+  addMembership.value = newValue;
 };
 
 </script>
@@ -34,6 +39,11 @@ const handleQuantityUpdate = (value) => {
       :error="emptySelection"
     />
     <QuantitySelector @update:quantity="handleQuantityUpdate"/>
+    <DividenMessage
+      :isChecked="addMembership"
+      :estimated="displayOptions.dividendEstimatedSavingsText"
+      @update:checked="handleCheckboxUpdate"
+    />
   </article>
 </template>
 

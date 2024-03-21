@@ -29,6 +29,10 @@ const handleCheckbox = () => {
       src="../assets/ice-axe-icon.svg"
       class="product-dividend-message__icon"
       alt="ice axe icon"/>
+    <img
+      src="../assets/mushrooms.svg"
+      class="product-dividend-message__img"
+      alt="mushrooms image"/>
     <section class="product-dividend-message__description">
       <p>Members get an estimated <b>{{ estimated }}</b> back on this item.</p>
       <div class="product-dividend-message__check--lifetime">

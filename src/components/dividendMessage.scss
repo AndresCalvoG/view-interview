@@ -12,13 +12,42 @@
   @media(min-width: 769px){
     grid-area: 5 / 2 / 6 / 2;
     max-width: 36.5rem;
-    max-height: 6rem;
+    height: 7rem;
+    max-height: 7rem;
+    border: 1px solid rgba(0,0,0,0.15);
+    border-radius: 0.4rem;
+    margin-top: 4rem;
+    padding: 1.8rem 1rem 1.2rem 1.6rem;
+    position: relative;
+    &::before{
+      content: '';
+      position: absolute;
+      top: -10px; 
+      left: 50%; 
+      transform: translateX(-50%);
+      width: 7rem; 
+      height: 10px;
+      background-color: white; 
+    }
+  }
+}
+.product-dividend-message__img{
+  display: none;
+  @media(min-width: 769px){
+    display: block;
+    width: 6rem;
+    position: absolute;
+    top: -30%;
+    left: 40%;
   }
 }
 .product-dividend-message__icon{
   width: 2rem;
   height: 2rem;
   margin-right: 1rem;
+  @media(min-width: 769px){
+    display: none;
+  }
 }
 .product-dividend-message__description{
   width: 100%;

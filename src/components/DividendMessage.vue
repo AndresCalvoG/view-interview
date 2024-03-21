@@ -2,6 +2,7 @@
 import {
   ref, defineProps, defineEmits,
 } from 'vue';
+import './dividendMessage.scss';
 
 const props = defineProps({
   estimated: {
@@ -23,14 +24,16 @@ const handleCheckbox = () => {
 </script>
 
 <template>
-  <article>
+  <article class="product-dividend-message">
     <img
       src="../assets/ice-axe-icon.svg"
+      class="product-dividend-message__icon"
       alt="ice axe icon"/>
-    <section>
+    <section class="product-dividend-message__description">
       <p>Members get an estimated <b>{{ estimated }}</b> back on this item.</p>
-      <div>
+      <div class="product-dividend-message__check--lifetime">
         <input type="checkbox"
+          class="product-dividend-message__checkbox"
           v-model="isCheckedBox"
           @change="handleCheckbox"
           aria-label="Add a lifetime membership of $30"

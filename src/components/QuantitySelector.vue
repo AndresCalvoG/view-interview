@@ -57,6 +57,13 @@ onMounted(() => {
     align-items: flex-start;
     margin-top: 2rem;
   }
+  @media(min-width: 769px){
+    .product-quantity{
+    grid-area: 4 / 2 / 5 / 2;
+    max-width: 36.5rem;
+    max-height: 5.5rem;
+    }
+  }
   .product-quaantity-label{
     font-size: 1.2rem;
     font-weight: normal;

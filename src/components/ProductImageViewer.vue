@@ -68,6 +68,13 @@ const handleClickThumbnail = (index) => {
     flex-direction: column;
     margin-bottom: 1rem;
   }
+  @media (min-width:769px){
+  .product-image-viewer {
+    height: 100%;
+    grid-row: span 7;
+    grid-area: 1 / 1 / 7 / 1;
+  }
+}
   .product-image-viewer__hero-image-wrapper {
     padding: 12px;
     border: 1px solid rgba(60, 60, 60, 0.12);

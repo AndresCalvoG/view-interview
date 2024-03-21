@@ -32,8 +32,9 @@ const handleSendRequest = (newValue) => {
 </script>
 
 <template>
-  <BreadcrumbPath :breadcrumbs="breadcrumbs"/>
-  <article class="product">
+  <article class="container">
+    <BreadcrumbPath :breadcrumbs="breadcrumbs"/>
+    <article class="product">
     <h1 class="product-title">{{ title }}</h1>
     <ProductImageViewer :images="images" :productTitle="title"/>
     <p class="product-price">$ {{ selectedPrice !== 0?selectedPrice +'.00':0 }}</p>
@@ -55,6 +56,7 @@ const handleSendRequest = (newValue) => {
       @send:request="handleSendRequest"
     />
   </article>
+</article>
 </template>
 
 <style scoped>

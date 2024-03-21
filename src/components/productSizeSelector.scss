@@ -3,6 +3,11 @@
 .product-sizes-selector{
   width: 100%;
   margin-top: 1rem;
+  @media(min-width: 769px){
+    grid-area: 3 / 2 / 4 / 2;
+    max-width: 36.5rem;
+    max-height: 8.8rem;
+  }
 }
 .product-sizes-selector__error{
   border: 1px solid red;

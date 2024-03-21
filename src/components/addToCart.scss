@@ -7,6 +7,11 @@
   justify-content: flex-start;
   align-items: center;
   margin-top: 1rem;
+  @media(min-width: 769px){
+    grid-area: 6 / 2 / 7 / 2;
+    max-width: 36.5rem;
+    max-height: 6.6rem;
+  }
 }
 .product-add-cart__btn{
   width: 100%;

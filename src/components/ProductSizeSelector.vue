@@ -1,6 +1,6 @@
 <script setup>
 import {
-  ref, computed, defineProps, defineEmits, onMounted,
+  ref, computed, defineProps, defineEmits,
 } from 'vue';
 import './productSizeSelector.scss';
 
@@ -37,7 +37,7 @@ const getSizeClasses = (index) => ({
 });
 const getSizeSelectorClasses = (error) => ({
   'product-sizes-selector__values': true,
-  'product-sizes-selector__error': !error,
+  'product-sizes-selector__error': error,
 });
 
 const handleClickSize = (index) => {
@@ -46,10 +46,6 @@ const handleClickSize = (index) => {
     emit('selected:price', sizesProps[sizes.value[index]].price);
   }
 };
-
-onMounted(() => {
-  emit('selected:price', sizesProps[sizes.value[selectedSizeIndex]]?.price || NaN);
-});
 </script>
 
 <template>
@@ -76,7 +72,7 @@ onMounted(() => {
       </button>
     </div>
   </section>
-  <span v-if="!error" class="product-sizes-selector__error--msg">
+  <span v-if="error" class="product-sizes-selector__error--msg">
     <img src="../assets/error-icon.svg" alt="error"/>Please select an available size</span>
 </template>
 

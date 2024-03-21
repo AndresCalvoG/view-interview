@@ -30,33 +30,52 @@ const getSizesProps = (sizesObj) => {
 
 const sizesProps = getSizesProps(props.bySize);
 
+const getSizeClasses = (index) => ({
+  'product-sizes-selector__size': true,
+  'product-sizes-selector__size--selected': index === selectedSizeIndex.value,
+  'product-sizes-selector__size--disabled': sizesProps[sizes.value[index]].status !== 'AVAILABLE',
+});
+const getSizeSelectorClasses = (error) => ({
+  'product-sizes-selector__values': true,
+  'product-sizes-selector__error': !error,
+});
+
+const handleClickSize = (index) => {
+  if (sizesProps[sizes.value[index]].status === 'AVAILABLE') {
+    selectedSizeIndex.value = index;
+    emit('selected:price', sizesProps[sizes.value[index]].price);
+  }
+};
+
 onMounted(() => {
   emit('selected:price', sizesProps[sizes.value[selectedSizeIndex]]?.price || NaN);
 });
 </script>
 
 <template>
-  <section>
-    <div>
+  <section class="product-sizes-selector">
+    <div class="product-sizes-selector__labels">
       <span v-if="!isNaN(selectedSizeIndex)">
         Size: <span>{{ sizes[selectedSizeIndex] }}</span>
       </span>
       <span v-else> Select a size</span>
       <a href="">Size chart</a>
     </div>
-    <div>
+    <div :class="getSizeSelectorClasses(error)">
       <button
         v-for="(size, index) in sizes"
         :key="`size-${index}`"
+        :class="getSizeClasses(index)"
+        :onClick="() => handleClickSize(index)"
       >
       {{ size }}
       <span
         v-if="sizesProps[sizes[index]].status !== 'AVAILABLE'"
-        ></span>
+        class="product-sizes-selector__line"></span>
       </button>
     </div>
   </section>
-  <span v-if="!error">
+  <span v-if="!error" class="product-sizes-selector__error--msg">
     <img src="../assets/error-icon.svg" alt="error"/>Please select an available size</span>
 </template>
 

@@ -3,6 +3,7 @@ import { ref } from 'vue';
 import ProductImageViewer from './components/ProductImageViewer.vue';
 import BreadcrumbPath from './components/BreadcrumbPath.vue';
 import ProductSizeSelector from './components/ProductSizeSelector.vue';
+import QuantitySelector from './components/QuantitySelector.vue';
 import ProductData from '../product-data.json';
 import './style/app.scss';
 
@@ -11,8 +12,12 @@ const {
 } = ProductData.product;
 const selectedPrice = ref(0);
 const emptySelection = ref(false);
+const quantity = ref(1);
 const handleSelectedPrice = (price) => {
   selectedPrice.value = price;
+};
+const handleQuantityUpdate = (value) => {
+  quantity.value = value;
 };
 
 </script>
@@ -28,6 +33,7 @@ const handleSelectedPrice = (price) => {
       @selected:price="handleSelectedPrice"
       :error="emptySelection"
     />
+    <QuantitySelector @update:quantity="handleQuantityUpdate"/>
   </article>
 </template>
 

@@ -67,6 +67,7 @@ onMounted(() => {
         :key="`size-${index}`"
         :class="getSizeClasses(index)"
         :onClick="() => handleClickSize(index)"
+        :aria-label="`select size ${size}`"
       >
       {{ size }}
       <span

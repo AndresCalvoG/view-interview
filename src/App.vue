@@ -33,30 +33,33 @@ const handleSendRequest = (newValue) => {
 
 <template>
   <article class="container">
-    <BreadcrumbPath :breadcrumbs="breadcrumbs"/>
+    <BreadcrumbPath :breadcrumbs="breadcrumbs" v-if="images"/>
     <article class="product">
-    <h1 class="product-title">{{ title }}</h1>
+    <h1 class="product-title" v-if="images">{{ title }}</h1>
     <ProductImageViewer :images="images" :productTitle="title"/>
-    <p class="product-price">$ {{ selectedPrice !== 0?selectedPrice +'.00':0 }}</p>
+    <p class="product-price" v-if="images">$ {{ selectedPrice !== 0?selectedPrice +'.00':0 }}</p>
     <ProductSizeSelector
       :bySize="bySize"
       @selected:price="handleSelectedPrice"
       :error="emptySelection"
+      v-if="images"
     />
-    <QuantitySelector @update:quantity="handleQuantityUpdate"/>
+    <QuantitySelector @update:quantity="handleQuantityUpdate" v-if="images"/>
     <DividenMessage
       :isChecked="addMembership"
       :estimated="displayOptions.dividendEstimatedSavingsText"
       @update:checked="handleCheckboxUpdate"
+      v-if="images"
     />
     <AddToCart
       :selectedPrice="selectedPrice"
       :addMembership="addMembership"
       :quantity="quantity"
       @send:request="handleSendRequest"
+      v-if="images"
     />
+    </article>
   </article>
-</article>
 </template>
 
 <style scoped>
